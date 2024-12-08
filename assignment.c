@@ -41,9 +41,7 @@ int main(int argc, char *argv[]) {
         matrix[i] = malloc(cols * sizeof(int));
         if (!matrix[i]) {
             fprintf(stderr, "Memory allocation for columns failed at row %d\n", i);
-            for (int j = 0; j < i; j++) {
-                free(matrix[j]);
-            }
+            for (int j = 0; j < i; j++) free(matrix[j]);
             free(matrix);
             return EXIT_FAILURE;
         }
@@ -58,9 +56,7 @@ int main(int argc, char *argv[]) {
     FILE *file = fopen("matrix.txt", "w");
     if (!file) {
         fprintf(stderr, "Failed to open file matrix.txt for writing\n");
-        for (int i = 0; i < rows; i++) {
-            free(matrix[i]);
-        }
+        for (int i = 0; i < rows; i++) free(matrix[i]);
         free(matrix);
         return EXIT_FAILURE;
     }
